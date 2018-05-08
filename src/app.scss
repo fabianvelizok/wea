@@ -1,8 +1,11 @@
 /* Global styles go here */
 
+$dark-grey: #212121;
+
 body {
   margin: 0;
   padding: 0;
+  color: $dark-grey;
 }
 
 * {

@@ -1,6 +1,6 @@
 import template from './header.html';
 import controller from './header.controller';
-import './header.css';
+import './header.scss';
 
 let headerComponent = {
   bindings: {},

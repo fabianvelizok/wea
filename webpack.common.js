@@ -1,15 +1,14 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, './src/app.js')
+    app: './src/app.js'
   },
-  mode: 'development',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js'
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist')
   },
   devServer: {
     contentBase: './src/',
@@ -21,26 +20,19 @@ module.exports = {
         test: /\.html$/,
         loader: "html-loader"
       },
-      {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: "css-loader"
-        })
-      },
       { test: /\.js$/,
-        exclude: [/app\/lib/, /node_modules/],
+        exclude: /(node_modules|bower_components)/,
         loader: ['ng-annotate-loader', 'babel-loader']
       },
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      template: 'index.html',
+      template: './src/index.html',
       inject: 'body',
       hash: true
-    }),
-    new ExtractTextPlugin('src/app.css')
+    })
   ],
   optimization: {
     runtimeChunk: 'single',

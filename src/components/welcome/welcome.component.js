@@ -1,6 +1,6 @@
 import template from './welcome.html';
 import controller from './welcome.controller';
-import './welcome.css';
+import './welcome.scss';
 
 let welcomeComponent = {
   bindings: {},

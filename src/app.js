@@ -2,6 +2,7 @@ import angular from 'angular';
 
 import uiRouter from '@uirouter/angularjs';
 
+import './app.scss';
 import AppComponent from './app.component';
 
 import Components from './components/components';
